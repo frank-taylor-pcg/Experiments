@@ -9,9 +9,10 @@
   mc:Ignorable="d"
   Title="Chapter 7"
 	Loaded="wndMain_Loaded"
+	WindowStartupLocation="CenterScreen"
 	Height="900"
 	Width="1600">
 	<Grid Name="backdrop" Background="DimGray">
-		<Canvas Name="canvas" Background="IndianRed"/>
+		<Canvas Name="canvas" Background="CornflowerBlue"/>
 	</Grid>
 </Window>

@@ -6,7 +6,8 @@ namespace Chapter7_472
 	public class Globals
 	{
 		public const int DONUT_SIZE = 16;
-		public const int NUM_DONUTS = 30_000;
+		public const int NUM_DONUTS = 100;
+		//public const int NUM_DONUTS = 30_000;
 
 		// Global random number generator
 		public static Random Rnd { get; set; } = new Random();

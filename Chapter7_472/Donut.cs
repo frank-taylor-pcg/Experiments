@@ -15,16 +15,22 @@ namespace Chapter7_472
 		public Donut()
 		{
 			// Calculate the starting velocities
-			m_deltaX = Globals.Rnd.Next(-2, 2);
-			m_deltaY = Globals.Rnd.Next(-2, 2);
+			m_deltaX = Globals.Rnd.Next(1, 3);
+			m_deltaY = Globals.Rnd.Next(1, 3);
+
+			// Using a simple boolean check to randomize the sign of the velocities while avoiding zero values
+			if (Globals.Rnd.Next(2) == 0) { m_deltaX *= -1; }
+			if (Globals.Rnd.Next(2) == 0) { m_deltaY *= -1; }
 
 			// Calculate the starting position
 			m_position = new Point(Globals.Rnd.Next(Globals.XMin, Globals.XMax), Globals.Rnd.Next(Globals.YMin, Globals.YMax));
 
 			// Create the visual representation of the donut
-			Geometry = new EllipseGeometry(m_position, Globals.DONUT_SIZE, Globals.DONUT_SIZE);
+			int iSize = Globals.Rnd.Next(Globals.DONUT_SIZE, Globals.DONUT_SIZE * 2);
+			Geometry = new EllipseGeometry(m_position, iSize, iSize);
 		}
 
+		// There is a bug evident here.  It's an easy fix once you spot it.
 		public void Update()
 		{
 			// Update the position based on the current velocities

@@ -50,9 +50,9 @@ namespace Chapter7_472
 		}
 
 		// Once the donuts are all drawn to the group, all we have to do is update their positions and they'll automatically redraw.
-		// This is probably where the slowdown is occurring.  Rather than batching the calls the screen is probably updating for each
-		// one that changes.  I don't know what's going on in the background yet, so can't optimize this.  In immediate mode using
-		// DirectX I can draw 100s of thousands of bouncing donuts at 100+ frames per second.
+		// This is probably where the slowdown is occurring.  Rather than batching the calls WPF is probably updating the screen for
+		// each one that changes.  I don't know what's going on in the background yet, so can't optimize this.  In immediate mode
+		// using DirectX I can draw 100s of thousands of bouncing donuts at 100+ frames per second.
 		public void Update()
 		{
 			foreach (Donut donut in donuts)
