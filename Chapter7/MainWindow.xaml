@@ -1,0 +1,17 @@
+﻿<Window
+	x:Name="wndMain"
+  x:Class="Chapter7.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:Chapter7"
+  mc:Ignorable="d"
+  Title="Chapter 7"
+	Loaded="wndMain_Loaded"
+	Height="900"
+	Width="1600">
+	<Grid Name="backdrop" Background="DimGray">
+		<Canvas Name="canvas" Background="IndianRed"/>
+	</Grid>
+</Window>
