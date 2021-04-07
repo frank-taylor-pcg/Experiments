@@ -24,7 +24,7 @@
 						<Run FontWeight="Bold">tooltip</Run>
 						<Run>. I've never tried to make a </Run>
 						<Run Foreground="DarkBlue" FontWeight="Bold" FontStyle="Italic">custom</Run>
-						<Run> tooltip, but it's good to know that just using the ToolTip element will not work in this regard.</Run>
+						<Run> tooltip. I'm not sure what the ToolTipService.ToolTip stuff offers that isn't available this way.</Run>
 					</TextBlock>
 				</StackPanel>
 			</StackPanel.ToolTip>
