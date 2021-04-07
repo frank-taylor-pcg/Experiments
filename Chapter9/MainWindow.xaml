@@ -1,0 +1,103 @@
+﻿<Window
+  x:Class="Chapter9.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:Chapter9"
+  mc:Ignorable="d"
+  Title="MainWindow"
+	WindowStartupLocation="CenterScreen"
+	Height="450" Width="800">
+	
+	<Grid>
+		<Grid.Resources>
+			<Style TargetType="Separator">
+				<Setter Property="Margin" Value="0,10" />
+			</Style>
+		</Grid.Resources>
+		<StackPanel>
+			<StackPanel.ToolTip>
+				<StackPanel>
+					<TextBlock>
+						<Run>This is a </Run>
+						<Run FontWeight="Bold">tooltip</Run>
+						<Run>. I've never tried to make a </Run>
+						<Run Foreground="DarkBlue" FontWeight="Bold" FontStyle="Italic">custom</Run>
+						<Run> tooltip, but it's good to know that just using the ToolTip element will not work in this regard.</Run>
+					</TextBlock>
+				</StackPanel>
+			</StackPanel.ToolTip>
+			
+			<!-- The following are in UWP, but not WPF
+			<AppBarButton />
+			<HyperlinkButton />-->
+			<RepeatButton
+				Width="250"
+				Content="Repeat Button"
+				Click="RepeatButton_Click"
+				Interval="250"
+				Delay="0" />
+			
+			<ToggleButton
+				Name="ToggleButton"
+				Content="Toggle Button"
+				IsThreeState="True"
+				Width="250"
+				Checked="Button_Checked"
+				Unchecked="Button_Unchecked"
+				Indeterminate="Button_Indeterminate" />
+
+			<Separator/>
+
+			<CheckBox
+				Name="CheckBox"
+				Content="Checkbox"
+				IsThreeState="True"
+				Checked="Button_Checked"
+				Unchecked="Button_Unchecked"
+				Indeterminate="Button_Indeterminate" />
+
+			<Separator/>
+
+			<StackPanel>
+				<RadioButton>Option 1</RadioButton>
+				<RadioButton>Option 2</RadioButton>
+				<RadioButton>Option 3</RadioButton>
+				<Separator/>
+				<RadioButton GroupName="A">Option A1</RadioButton>
+				<RadioButton GroupName="A">Option A2</RadioButton>
+				<Separator/>
+				<RadioButton GroupName="B">Option B1</RadioButton>
+				<RadioButton GroupName="B">Option B2</RadioButton>
+			</StackPanel>
+
+			<Separator/>
+
+			<Expander Header="Grand Finale">
+			<UniformGrid Columns="3" Background="#222">
+				<UniformGrid.Resources>
+					<Style TargetType="{x:Type local:LEDToggle}" BasedOn="{StaticResource LEDToggle}">
+						<Setter Property="Background" Value="Transparent" />
+						<Setter Property="Foreground" Value="White" />
+						<Setter Property="BorderBrush" Value="DimGray" />
+					</Style>
+				</UniformGrid.Resources>
+				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+
+				<local:LEDToggle Content="LEDToggle button" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
+
+				<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+				<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
+			</UniformGrid>
+			</Expander>
+
+		</StackPanel>
+
+	</Grid>
+</Window>
