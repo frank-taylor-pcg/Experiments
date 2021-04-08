@@ -5,6 +5,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:Chapter9"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
   mc:Ignorable="d"
   Title="MainWindow"
 	WindowStartupLocation="CenterScreen"
@@ -15,8 +16,10 @@
 			<Style TargetType="Separator">
 				<Setter Property="Margin" Value="0,10" />
 			</Style>
+
+			<x:Static x:Key="MaxToolTipDuration" Member="sys:Int32.MaxValue" />
 		</Grid.Resources>
-		<StackPanel>
+		<StackPanel ToolTipService.ShowDuration="{StaticResource MaxToolTipDuration}">
 			<StackPanel.ToolTip>
 				<StackPanel>
 					<TextBlock>
@@ -24,7 +27,7 @@
 						<Run FontWeight="Bold">tooltip</Run>
 						<Run>. I've never tried to make a </Run>
 						<Run Foreground="DarkBlue" FontWeight="Bold" FontStyle="Italic">custom</Run>
-						<Run> tooltip. I'm not sure what ToolTipService.ToolTip offers that isn't available this way.</Run>
+						<Run> tooltip.</Run>
 					</TextBlock>
 				</StackPanel>
 			</StackPanel.ToolTip>
