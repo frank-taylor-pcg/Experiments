@@ -6,10 +6,11 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:Chapter9"
 	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:uc="clr-namespace:Chapter9.UserControls"
   mc:Ignorable="d"
   Title="MainWindow"
 	WindowStartupLocation="CenterScreen"
-	Height="450" Width="800">
+	Height="500" Width="800">
 	
 	<Grid>
 		<Grid.Resources>
@@ -19,7 +20,7 @@
 
 			<x:Static x:Key="MaxToolTipDuration" Member="sys:Int32.MaxValue" />
 		</Grid.Resources>
-		<StackPanel ToolTipService.ShowDuration="{StaticResource MaxToolTipDuration}">
+		<StackPanel>
 			<StackPanel.ToolTip>
 				<StackPanel>
 					<TextBlock>
@@ -78,29 +79,37 @@
 			<Separator/>
 
 			<Expander Header="Grand Finale">
-			<UniformGrid Columns="3" Background="#222">
-				<UniformGrid.Resources>
-					<Style TargetType="{x:Type local:LEDToggle}" BasedOn="{StaticResource LEDToggle}">
-						<Setter Property="Background" Value="Transparent" />
-						<Setter Property="Foreground" Value="White" />
-						<Setter Property="BorderBrush" Value="DimGray" />
-					</Style>
-				</UniformGrid.Resources>
-				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+				<UniformGrid Columns="3" Background="#222">
+					<UniformGrid.Resources>
+						<Style TargetType="{x:Type local:LEDToggle}" BasedOn="{StaticResource LEDToggle}">
+							<Setter Property="Background" Value="Transparent" />
+							<Setter Property="Foreground" Value="White" />
+							<Setter Property="BorderBrush" Value="DimGray" />
+						</Style>
+						
+						<Style TargetType="{x:Type uc:LEDButton}">
+							<Setter Property="Background" Value="Transparent" />
+							<Setter Property="Foreground" Value="White" />
+							<Setter Property="BorderBrush" Value="DimGray" />
+						</Style>
+					</UniformGrid.Resources>
+					<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
 
-				<local:LEDToggle Content="LEDToggle button" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
+					<local:LEDToggle Content="LEDToggle button" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
 
-				<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
-				<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
-			</UniformGrid>
+					<local:LEDToggle Content="LEDToggle button" IsChecked="{x:Null}" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="True" />
+					<local:LEDToggle Content="LEDToggle button" IsChecked="False" />
+
+					<uc:LEDButton Content="LEDBUTTON" Foreground="White"/>
+				</UniformGrid>
 			</Expander>
 
+			<uc:LEDButton Height="50" Width="200"/>
 		</StackPanel>
-
 	</Grid>
 </Window>
