@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6192895C-8889-42A3-82CD-465D4E8DA8A5}</ProjectGuid>
+    <ProjectGuid>{7DF6D342-28F9-4960-A1C3-C64B8804775D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Chapter9</RootNamespace>
-    <AssemblyName>Chapter9</AssemblyName>
+    <RootNamespace>MyCustomControls</RootNamespace>
+    <AssemblyName>MyCustomControls</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,9 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\LEDButton.xaml.cs">
-      <DependentUpon>LEDButton.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LEDToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,17 +71,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\PercentConverter.cs" />
-    <Compile Include="LEDToggle.cs" />
+    <Compile Include="CustomControls\LEDToggleButton.cs" />
+    <Compile Include="CustomControls\LEDToggleTypeId.cs" />
+    <Compile Include="CustomControls\PlaceholderTextbox.cs" />
+    <Compile Include="Data\IOPoint.cs" />
+    <Compile Include="Data\ObservableObject.cs" />
+    <Compile Include="Enums\ProfibusInputId.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Themes\LEDToggleTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Themes\LEDTrafficLightToggleButton.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\LEDButton.xaml">
+    <Page Include="Themes\PlaceholderTextbox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,15 +1,15 @@
-<ResourceDictionary
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="clr-namespace:Chapter9"
-	xmlns:converters="clr-namespace:Chapter9.Converters">
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:MyCustomControls.CustomControls"
+	xmlns:converters="clr-namespace:MyCustomControls.Converters">
 
-	<Style x:Key="LEDToggle" TargetType="{x:Type local:LEDToggle}">
+	<Style x:Key="LEDToggleButton" TargetType="controls:LEDToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
 		<!-- This style uses the PercentConverter to determine sizes of the various sub-elements. -->
 		<Style.Resources>
 			<converters:PercentConverter x:Key="PercentConverter" />
 		</Style.Resources>
-		
+
 		<!-- LED Buttons will always be 3 state.  We indicate the NULL state when we don't know the state. -->
 		<Setter Property="IsThreeState" Value="True" />
 
@@ -18,30 +18,34 @@
 		<Setter Property="BorderBrush" Value="Black" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Width" Value="200" />
-		<Setter Property="Height" Value="30" />
+		<Setter Property="Height" Value="24" />
 
-		<!-- This defines the appearance of the LED Button -->
-		<!--
-			Note that I'm binding properties of the children (i.e., height and width) to the values of the parents.  I discovered that
-			if the parent's property wasn't explicitly defined then I couldn't do this and the results were unpredictable.
-			-->
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type local:LEDToggle}">
+				<ControlTemplate TargetType="controls:LEDToggleButton">
 					<Border
 						x:Name="wrappingBorder"
-						ToolTip="{TemplateBinding Content}"
 						Background="{TemplateBinding Background}"
 						BorderBrush="{TemplateBinding BorderBrush}"
 						BorderThickness="{TemplateBinding BorderThickness}"
 						Width="{TemplateBinding Width}"
 						Height="{TemplateBinding Height}">
 
+						<Border.ToolTip>
+							<TextBlock>
+								<Run Text="{TemplateBinding Content}" />
+								<Run> Node: </Run>
+								<Run Text="{Binding Path=NodeId, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+								<Run> Bit Offset: </Run>
+								<Run Text="{Binding Path=BitOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+							</TextBlock>
+						</Border.ToolTip>
+
 						<Grid
 							x:Name="outerGrid"
 							Width="{TemplateBinding Width, Converter={StaticResource PercentConverter}, ConverterParameter=0.98}"
 							Height="{TemplateBinding Height, Converter={StaticResource PercentConverter}, ConverterParameter=0.95}">
-							
+
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
 								<ColumnDefinition Width="*" />
@@ -100,7 +104,7 @@
 								Margin="2,0,0,0"
 								Padding="2" />
 						</Grid>
-					</Border>
+					</Border>					
 
 					<!-- Modify the color as well as the position of the LED within its slider based on the value of the ToggleButton.IsChecked property -->
 					<ControlTemplate.Triggers>
