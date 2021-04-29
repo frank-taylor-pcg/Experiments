@@ -1,12 +1,77 @@
-﻿<Window x:Class="WPFExperiments.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFExperiments"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+	x:Class="WPFExperiments.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:WPFExperiments"
+	xmlns:controls="clr-namespace:WPFExperiments.CustomControls"
+	xmlns:converters="clr-namespace:WPFExperiments.Converters"
+	xmlns:userControls="clr-namespace:WPFExperiments.UserControls"
+	mc:Ignorable="d"
+	Title="MainWindow"
+	WindowStartupLocation="CenterScreen"
+	Background="#222"
+	Height="900" Width="1600">
+	<StackPanel>
+		<StackPanel.Resources>
+			<converters:ValueToColorConverter x:Key="ValueToColorConverter" />
+		</StackPanel.Resources>
+		
+		<StackPanel Orientation="Horizontal">
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+		</StackPanel>
+		
+		<UniformGrid Columns="4">
+			<UniformGrid.Resources>
+				<Style TargetType="{x:Type controls:LEDToggleButton}">
+					<Setter Property="Background" Value="#222" />
+					<Setter Property="Foreground" Value="White" />
+					<Setter Property="FontSize" Value="20" />
+					<Setter Property="Height" Value="40" />
+					<!--<Setter Property="Width" Value="300" />-->
+					<Setter Property="Margin" Value="5" />
+				</Style>
+			</UniformGrid.Resources>
 
-    </Grid>
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="False" Content="Default LEDToggleButton" />
+
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+			<controls:LEDToggleButton IsThreeState="True" Content="Default LEDToggleButton" />
+		</UniformGrid>
+
+		<Border Width="400">
+			<StackPanel
+				Background="{Binding Path=RegulatedPermit, Converter={StaticResource ValueToColorConverter}}">
+				<TextBlock>
+					<Run Text="The current status is " />
+					<Run Text="{Binding Status}" Foreground="White" Background="#222" />
+				</TextBlock>
+					
+				<Button Content="Cycle regulated status" Click="Button_Click" />
+				<TextBlock Text="Testing the difference between source and path" />
+				<TextBlock Text="{Binding Source=TestObject, Path=SomeValue}" />
+			</StackPanel>
+		</Border>
+
+		<ContentControl x:Name="ContentPane" />
+	</StackPanel>
 </Window>

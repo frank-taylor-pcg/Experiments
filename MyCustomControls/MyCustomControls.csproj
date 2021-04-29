@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\LEDToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,7 @@
     <Compile Include="Converters\PercentConverter.cs" />
     <Compile Include="CustomControls\LEDToggleButton.cs" />
     <Compile Include="CustomControls\LEDToggleTypeId.cs" />
+    <Compile Include="CustomControls\PlaceholderTextbox.cs" />
     <Compile Include="Data\IOPoint.cs" />
     <Compile Include="Data\ObservableObject.cs" />
     <Compile Include="Enums\ProfibusInputId.cs" />
@@ -79,6 +84,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\LEDTrafficLightToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\PlaceholderTextbox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

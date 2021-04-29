@@ -13,22 +13,35 @@
   Title="MainWindow" Height="600" Width="800">
 
 	<!--Loaded="Window_Loaded"-->
-	
+
 	<Window.Resources>
-		<Style x:Key="dark" TargetType="controls:LEDToggleButton" BasedOn="{StaticResource LEDToggleButton}">
+		<!-- BasedOn="{StaticResource LEDToggleButton}" -->
+		<Style x:Key="dark" TargetType="controls:LEDToggleButton" >
 			<Setter Property="Foreground" Value="White" />
 			<Setter Property="Background" Value="Transparent" />
 			<Setter Property="BorderBrush" Value="DimGray" />
 		</Style>
-		
+
 		<!-- Why is this necessary?  What am I doing wrong? -->
 		<!-- For clarification, if I try to mix the default style and the above modified style on a page, the default gets lost -->
-		<Style TargetType="controls:LEDToggleButton" BasedOn="{StaticResource LEDToggleButton}" />
+		<!--<Style TargetType="controls:LEDToggleButton" BasedOn="{StaticResource LEDToggleButton}" />-->
 
 		<converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
 	</Window.Resources>
 
 	<StackPanel>
+		<Border Background="White" Padding="10">
+			<!-- Specifying the style shouldn't be necessary-->
+			<controls:PlaceholderTextbox
+				PlaceholderText="Enter something here"
+				Height="30"
+				Background="Wheat"
+				BorderBrush="DimGray"
+				BorderThickness="2"
+				VerticalContentAlignment="Center"
+				Padding="5"
+			/>
+		</Border>
 
 		<StackPanel Orientation="Horizontal">
 			<CheckBox x:Name="cbProfibusConnected" Content="Is Profibus Connected?" Foreground="White" Margin="20" />
@@ -52,6 +65,7 @@
 						Indeterminate="LEDToggleButton_Indeterminate"
 						Height="30"
 						Margin="5">
+						
 						<controls:LEDToggleButton.ToolTip>
 							<TextBlock>
 								<Run>Node: </Run>

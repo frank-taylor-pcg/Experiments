@@ -306,4 +306,61 @@
 		<Setter Property="Template" Value="{StaticResource LEDVerticalSlider}" />
 	</Style>
 
+	<Style x:Key="PlaceHolderTextbox" TargetType="controls:PlaceholderTextbox">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:PlaceholderTextbox}">
+					<Grid
+						Width="{TemplateBinding Width}"
+						Height="{TemplateBinding Height}"
+						Margin="{TemplateBinding Margin}"
+						HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+						VerticalAlignment="{TemplateBinding VerticalAlignment}"
+						AllowDrop="{TemplateBinding AllowDrop}"
+						IsEnabled="{TemplateBinding IsEnabled}"
+						Focusable="{TemplateBinding Focusable}"
+						>
+
+						<TextBox
+							x:Name="tbValue"
+							Text="{TemplateBinding Text}"
+							Background="{TemplateBinding Background}"
+							Foreground="{TemplateBinding Foreground}"
+							Padding="{TemplateBinding Padding}"
+							BorderBrush="{TemplateBinding BorderBrush}"
+							BorderThickness="{TemplateBinding BorderThickness}"
+							HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+							VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+							/>
+
+						<TextBlock
+							x:Name="tbPlaceholder"
+							Text="{TemplateBinding PlaceholderText}"
+							FontStyle="{TemplateBinding PlaceholderFontStyle}"
+							Foreground="{TemplateBinding PlaceholderForeground}"
+							Background="Transparent"
+							Padding="{TemplateBinding Padding}"
+							TextAlignment="{TemplateBinding HorizontalContentAlignment}"
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							>
+
+							<TextBlock.Style>
+								<Style TargetType="{x:Type TextBlock}">
+									<Style.Triggers>
+										<DataTrigger Binding="{Binding Text, ElementName=tbValue}" Value="">
+											<Setter Property="Visibility" Value="Visible" />
+										</DataTrigger>
+									</Style.Triggers>
+
+									<!-- By default the placeholder text is hidden -->
+									<Setter Property="Visibility" Value="Hidden" />
+								</Style>
+							</TextBlock.Style>
+						</TextBlock>
+					</Grid>
+				</ControlTemplate>
+
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

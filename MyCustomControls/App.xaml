@@ -6,10 +6,13 @@
   StartupUri="MainWindow.xaml">
 	
 	<Application.Resources>
+
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<!--<ResourceDictionary Source="Themes/LEDToggleButton.xaml" />-->
+				<!--<ResourceDictionary Source="Themes/LEDToggleButton.xaml" />
 				<ResourceDictionary Source="Themes/LEDTrafficLightToggleButton.xaml" />
+				<ResourceDictionary Source="Themes/PlaceholderTextbox.xaml" />-->
+				<ResourceDictionary Source="Themes/Generic.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>
